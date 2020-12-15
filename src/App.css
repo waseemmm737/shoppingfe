@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+}
+
+.nav-items {
+  margin-left: 35%;
+}
+
+.footer {
+  color: white;
+  background-color: dimgrey;
+}
+
+.footer-container {
+  margin-left: '5%';
+  margin-right: '5%';
+}
+
+.ft-center{
+  background-color: lightseagreen;
+  border-radius: 50px;
+  margin-left: 37%;
+  margin-right: 37%;
+}
