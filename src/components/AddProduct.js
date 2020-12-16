@@ -44,9 +44,13 @@ export default class AddProduct extends Component {
         </Form>
         <Button
           onClick={() => {
-            Axios.post("http://localhost:5000/prohub/addProduct", this.state)
-              .then((res) => alert("success"))
-              .catch((err) => console.log(err));
+            if (this.validURL(this.state.pic)) {
+              Axios.post("http://localhost:5000/prohub/addProduct", this.state)
+                .then((res) => alert("success"))
+                .catch((err) => alert(err));
+            } else {
+              alert("Invalid Product Data")
+            }
           }}
         >
           Add
@@ -54,4 +58,16 @@ export default class AddProduct extends Component {
       </>
     );
   }
+  validURL = (str) => {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  };
 }
