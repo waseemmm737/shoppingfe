@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Input } from "reactstrap";
 import { toast } from "react-toastify";
+import { serverURL } from "./constants";
 export default class AddProduct extends Component {
   state = { count: 0 };
   handler = (event) => {
@@ -45,7 +46,7 @@ export default class AddProduct extends Component {
         <Button
           onClick={() => {
             if (this.validURL(this.state.pic)) {
-              Axios.post("http://localhost:5000/prohub/addProduct", this.state)
+              Axios.post(serverURL+"/addProduct", this.state)
                 .then((res) => alert("success"))
                 .catch((err) => alert(err));
             } else {

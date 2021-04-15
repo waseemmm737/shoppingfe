@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import Product from './Product';
+import { serverURL } from './constants';
 
 export default class Bcard extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class Bcard extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:5000/prohub/getProducts')
+    axios.get(serverURL+'/getProducts')
     .then(response=>{
       this.setState({products:response.data})
     });

@@ -35,7 +35,7 @@ export default class Cartproducts extends Component {
   addPro = (p) => {
     let data = this.props.pro;
     var index = data.indexOf(p);
-    data[index].count = data[index].count + 1;
+    data[index].count = (parseInt(data[index].count)||0) + 1;
     console.log(data)
     this.props.add(data);
   }

@@ -41,8 +41,8 @@ export default class App extends Component {
     this.state = {
       search: "",
       searchK: "",
-      count: "0",
-      total: "0",
+      count: 0,
+      total: 0,
       cp: [],
     };
   }
@@ -82,41 +82,9 @@ export default class App extends Component {
               src={"prohub_logo.png"}
             />
           </Link>
-          <div
-            style={{
-              marginLeft: "20%",
-              width: "100%",
-            }}
-          >
-            <Form
-              inline
-              onSubmit={(e) => {
-                e.preventDefault();
-                this.setState({ searchK: this.state.search });
-              }}
-            >
-              <FormControl
-                style={{
-                  margin: "2px",
-                  width: "40%",
-                }}
-                type="text"
-                placeholder="Search"
-                className="my-sm-2"
-                value={this.state.search}
-                onChange={(v) => {
-                  this.setState({ search: v.target.value });
-                }}
-              />
-
-              <Button
-                onClick={() => {
-                  this.setState({ searchK: this.state.search });
-                }}
-              >
-                <FaSearch />
-              </Button>
-
+          <Nav.Link>
+                  <Link to="/addProduct">Add Product</Link>
+                </Nav.Link>
               <Link
                 to="/Cartproducts"
                 style={{
@@ -146,48 +114,8 @@ export default class App extends Component {
               >
                 {this.state.count}
               </p>
-            </Form>
-          </div>
         </Navbar>
-        <Navbar bg="light" expand="lg">
-          <NavDropdown
-            style={{
-              fontWeight: "bold",
-              fontSize: "24px",
-            }}
-            title="Categories"
-            id="basic-nav-dropdown"
-          >
-            <NavDropdown.Item>
-              <Link to="/"> All Items </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-              <Link to="/Tshirt"> T-Shirt </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-              <Link to="/Bcard"> Business Cards </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-              <Link to="/Checkshirt"> Check Shirts </Link>
-            </NavDropdown.Item>
-          </NavDropdown>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <div class="nav-items">
-              <Nav className="mr-auto">
-                <Nav.Link>
-                  <Link to="/"> Home </Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link to="/about"> About </Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link to="/addProduct">Add Product</Link>
-                </Nav.Link>
-              </Nav>
-            </div>
-          </Navbar.Collapse>
-        </Navbar>
-        <div className="container">
+       <div className="container">
           <Switch>
             <Route path="/Cartproducts">
               <Cartproducts
