@@ -140,24 +140,25 @@ export default class Card extends React.Component {
                     >
                         {this.state.products.map(
                             (product, index) => {
-                                product.count = product.count ? product.count : 0
-                                return (product.name
+                                let { name = "", price = "", desc = "", pic = "", count = 0 } = product
+                                let { filter = "" } = this.props
+                                return (name
                                     .toLowerCase()
-                                    .includes(this.props.filter.toLowerCase()) ||
-                                    this.props.filter.toLowerCase() === "") && (
+                                    .includes(filter.toLowerCase()) ||
+                                    filter.toLowerCase() === "") && (
                                         <div className="col-sm-3">
                                             <div class="card">
                                                 <Link to="/product">
-                                                    <img src={product.pic} class="card-img-top" alt="..." />
+                                                    <img src={pic} class="card-img-top" alt="..." />
                                                 </Link>
 
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{product.name}</h5>
-                                                    <h6> EUR. {product.price}/- </h6>
-                                                    <p style={{ fontSize: "14px" }}> {product.desc} </p>
+                                                    <h5 class="card-title">{name}</h5>
+                                                    <h6> EUR. {price}/- </h6>
+                                                    <p style={{ fontSize: "14px" }}> {desc} </p>
 
                                                     <button
-                                                        disabled={product.count === 1}
+                                                        disabled={count === 1}
                                                         class="btn btn-success"
                                                         onClick={() => {
                                                             this.addInCart(product, index);
@@ -179,9 +180,9 @@ export default class Card extends React.Component {
                                                     {" "}
                                                     <button
                                                         class="btn btn-warning"
-                                                        onClick={() => this.setState({ showModal: true,...product })}
+                                                        onClick={() => this.setState({ showModal: true, ...product })}
                                                     >
-                                                        
+
                                                         <FaEdit />
                                                     </button>
                                                 </div>
@@ -228,7 +229,7 @@ export default class Card extends React.Component {
                         </Form>
                         <Button
                             onClick={() => {
-                                Axios.post(serverURL + "/updateProduct/"+this.state._id, { ...this.state, products: null })
+                                Axios.post(serverURL + "/updateProduct/" + this.state._id, { ...this.state, products: null })
                                     .then((res) => { alert("success"); this.componentDidMount() })
                                     .catch((err) => alert(err));
                             }}
