@@ -45,7 +45,7 @@ export default class Order extends Component {
                                 <div className="row">
                                   <div className="col-sm-4">
                                     <h4>{product.name}</h4>
-                                    <p> Rs. {product.price}/- </p>
+                                    <p> EUR. {product.price}/- </p>
                                   </div>
                                   <div className="col-sm-5">
                                     <h5 style={{

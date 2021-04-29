@@ -78,7 +78,7 @@ export default class Checkshirts extends React.Component {
                       
                       <div class="card-body">
                       <h5 class="card-title">{product.name}</h5>
-                      <h6> Rs. {product.price}/- </h6>
+                      <h6> EUR. {product.price}/- </h6>
                       <button disabled={product.count === 1}
                       class="btn btn-primary"
                       onClick={() => {

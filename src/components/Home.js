@@ -153,7 +153,7 @@ export default class Card extends React.Component {
 
                                                 <div class="card-body">
                                                     <h5 class="card-title">{product.name}</h5>
-                                                    <h6> Rs. {product.price}/- </h6>
+                                                    <h6> EUR. {product.price}/- </h6>
                                                     <p style={{ fontSize: "14px" }}> {product.desc} </p>
 
                                                     <button
